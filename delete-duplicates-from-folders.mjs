@@ -33,7 +33,20 @@ function getAllFiles(dirPath, arrayOfFiles) {
 
 // Function to compare files between two directories
 function findCommonFiles(filesA, filesB) {
-  const filesASet = new Set(filesA.map((file) => path.basename(file)));
+  let hasWarnedUser = false
+  const filesASet = new Set(
+    // Ignore files if they share the same base path as FOLDER_B
+    filesA.filter(file => {
+      const isComparingWithSelf = path.dirname(file).includes(folderBPath)
+      if (!hasWarnedUser) {
+        console.log(`🔔 Some Folder_B files share the exact same path as Folder_A files. Note that those files will be ignored from the deletion.`)
+        hasWarnedUser = true
+      }
+      return !isComparingWithSelf
+    }).map((file) => {
+      return path.basename(file)
+    })
+  )
   return filesB.filter((file) => {
     const basename = path.basename(file)
     return filesASet.has(basename) && !filesToIgnore.includes(basename)
@@ -59,7 +72,7 @@ async function main() {
   const commonFiles = findCommonFiles(filesA, filesB);
 
   if (commonFiles.length === 0) {
-    console.log('No matching files found between folder A and folder B.');
+    console.log('🙈 No matching files found between folder A and folder B.');
     return;
   }
 
@@ -81,7 +94,7 @@ async function main() {
       fs.unlinkSync(file);
       console.log(`Deleted: ${file}`);
     });
-    console.log('Files deleted.');
+    console.log('🗑 Files deleted.');
   } else {
     console.log('No files were deleted.');
   }
