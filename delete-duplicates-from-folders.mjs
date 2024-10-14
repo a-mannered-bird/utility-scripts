@@ -63,7 +63,7 @@ async function main() {
     return;
   }
 
-  console.log('Matching files found:');
+  console.log(`${commonFiles.length} matching files found:`);
   commonFiles.forEach((file) => console.log(file));
 
   // Ask the user if they want to delete the files
