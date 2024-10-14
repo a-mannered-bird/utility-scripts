@@ -1,0 +1,16 @@
+{
+  "name": "utility-scripts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "delete-duplicates": "node delete-duplicates-from-folders.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "inquirer": "^12.0.0"
+  }
+}
