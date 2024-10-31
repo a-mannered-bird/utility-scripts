@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "delete-duplicates": "node delete-duplicates-from-folders.mjs",
+    "move-md-files": "node move-md-files-with-tag.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.4.5",
-    "inquirer": "^12.0.0"
+    "inquirer": "^12.0.0",
+    "js-yaml": "^4.1.0"
   }
 }

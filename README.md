@@ -17,3 +17,16 @@ FOLDER_B=bar/foo
 ```
 
 Run the script in the terminal with the `npm run delete-duplicates` command. You will be prompted for confirmation before the script deletes anything. If you want to ignore some filenames, add them inside the variable `filesToIgnore` in `delete-duplicates-from-folders.mjs`.
+
+## Move Markdown files by tag
+
+Move markdown files from a folder A to a folder B, only if they have the tag TAG_TARGET that you defined in the environmental variables.
+Set the env variables in a `.env` file:
+
+```
+FOLDER_A=foo/inbox
+FOLDER_B=bar/dev-articles
+TAG_TARGET=dev-article
+```
+
+Run the script in the terminal with the `npm run move-md-files` command. You will be prompted for confirmation before the script moves anything.
